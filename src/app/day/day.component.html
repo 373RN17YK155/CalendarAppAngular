@@ -1,0 +1,6 @@
+<div class="border border-gray-200 flex flex-col h-full">
+  <header class="flex flex-col items-center">
+    <p class="text-sm mt-1" *ngIf="rowIndex === 0">{{day?.format('ddd')?.toUpperCase()}}</p>
+    <p class="text-sm p-1 my-1 text-center" [ngClass]="{ 'bg-blue-600 text-white rounded-full w-7': isCurrnetDay }">{{day?.format('DD')}}</p>
+  </header>
+</div>
