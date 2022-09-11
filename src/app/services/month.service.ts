@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as dayjs from 'dayjs';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Dayjs } from 'dayjs';
+import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,15 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class MonthService {
   private _monthIndex = new BehaviorSubject<number>(dayjs().month());
 
-  public getIndex = (): number => this._monthIndex.value;
+  private _selectedDay = new BehaviorSubject<Dayjs | null>(null)
 
-  public selectIndex = (): Observable<number> => this._monthIndex;
+  getIndex = (): number => this._monthIndex.value;
 
-  public setIndex = (index: number): void => this._monthIndex.next(index);
+  getCurrentDay = () => this._selectedDay.value;
+
+  selectIndex = (): Observable<number> => this._monthIndex;
+
+  setSelectedDay = (day: Dayjs) => this._selectedDay.next(day);
+
+  setIndex = (index: number): void => this._monthIndex.next(index);
 }

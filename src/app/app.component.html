@@ -1,2 +1,7 @@
-<app-calendar-header></app-calendar-header>
-<app-calendar [month]="currentMonth"></app-calendar>
+<div class="h-screen flex flex-col">
+  <app-calendar-header></app-calendar-header>
+  <div class="flex flex-1">
+    <app-sidebar></app-sidebar>
+    <app-month class="flex-1 h-full" [month]="currentMonth$ | async"></app-month>
+  </div>
+</div>

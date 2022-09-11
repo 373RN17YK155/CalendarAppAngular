@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Dayjs } from 'dayjs';
+import { map, Observable } from 'rxjs';
 import { MonthService } from './services';
 import { CalendarUtils } from './utils';
 
@@ -11,9 +12,9 @@ import { CalendarUtils } from './utils';
 export class AppComponent  implements OnInit {
   constructor(private monthService: MonthService) {}
 
-  currentMonth: Array<Array<Dayjs>> | null = null;
+  currentMonth$: Observable<Array<Array<Dayjs>>> | null = null;
 
   ngOnInit() {
-    this.monthService.selectIndex().subscribe(index => (this.currentMonth = CalendarUtils.getMonth(index)));
+    this.currentMonth$ = this.monthService.selectIndex().pipe(map(index => CalendarUtils.getMonth(index)));
   }
 }
