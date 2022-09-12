@@ -9,13 +9,15 @@ import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
 export class MonthService {
   private _monthIndex = new BehaviorSubject<number>(dayjs().month());
 
-  private _selectedDay = new BehaviorSubject<Dayjs | null>(null)
+  private _selectedDay = new BehaviorSubject<Dayjs>(dayjs());
 
   getIndex = (): number => this._monthIndex.value;
 
   getCurrentDay = () => this._selectedDay.value;
 
   selectIndex = (): Observable<number> => this._monthIndex;
+
+  selectCurrentDay = () => this._selectedDay;
 
   setSelectedDay = (day: Dayjs) => this._selectedDay.next(day);
 

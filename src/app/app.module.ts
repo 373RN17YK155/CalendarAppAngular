@@ -8,6 +8,8 @@ import { DayComponent } from './day/day.component';
 import { CreateEventButtonComponent } from './create-event-button/create-event-button.component';
 import { SmallCalengarComponent } from './small-calengar/small-calengar.component';
 import { MonthComponent } from './month/month.component';
+import { EventModalComponent } from './event-modal/event-modal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,10 +19,13 @@ import { MonthComponent } from './month/month.component';
     DayComponent,
     CreateEventButtonComponent,
     SmallCalengarComponent,
-    MonthComponent
+    MonthComponent,
+    EventModalComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

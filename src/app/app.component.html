@@ -5,3 +5,5 @@
     <app-month class="flex-1 h-full" [month]="currentMonth$ | async"></app-month>
   </div>
 </div>
+
+<app-event-modal *ngIf="modalVisibility$ | async"></app-event-modal>

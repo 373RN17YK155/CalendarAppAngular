@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EventModalService } from '../services/event-modal.service';
 
 @Component({
   selector: 'app-create-event-button',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateEventButtonComponent implements OnInit {
 
-  constructor() { }
+  constructor(private evemtModalService: EventModalService) { }
 
   ngOnInit(): void {
+  }
+
+  handleShowModal() {
+    this.evemtModalService.setModalVisibility(true);
   }
 
 }
