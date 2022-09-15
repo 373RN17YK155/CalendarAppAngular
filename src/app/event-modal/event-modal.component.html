@@ -1,10 +1,11 @@
 <div class="h-screen w-full fixed left-0 top-0 flex justify-center items-center">
-  <form action="" class="bg-white rounded-lg shadow-2xl w-1/4" [formGroup]="form">
+  <form (submit)="handleSubmit(form)" class="bg-white rounded-lg shadow-2xl w-1/4" [formGroup]="form">
     <header class="bg-gray-200 px-4 py-2 flex justify-between items-center">
       <span class="material-icons-outlined text-gray-400">drag_handle</span>
-      <button>
-        <span class="material-icons-outlined text-gray-400" (click)="handleClose()">close</span>
-      </button>
+      <div class="ml-auto">
+        <button *ngIf="selectedEvent"><span class="material-icons-outlined text-gray-400 cursor-pointer" (click)="handleDelete()">delete</span></button>
+        <button><span class="material-icons-outlined text-gray-400" (click)="handleClose()">close</span></button>
+      </div>
     </header>
     <div class="p-3">
       <div class="grid grid-cols-1/5 items-end gap-y-7">
@@ -16,18 +17,14 @@
         <input class="pt-3 border-0 text-gray-600 pb w-full border-b border-gray-200 focus:outline-none focus:ring-0 focus:border-blue-500" type="text" name="description" placeholder="Add a description" formControlName="description">
         <span class="material-icons-outlined text-gray-400">bookmark_border</span>
         <div class="flex gap-x-2">
-          <span *ngFor="let labelClass of labelsClasses" class="w-6 h-6 rounded-full flex items-center justify-center cursor-pointer" [ngClass]="[getColorClass(labelClass)]" (click)="label = labelClass">
-            <span *ngIf="label === labelClass" class="material-icons-outlined text-white text-sm">
-              check
-            </span>
+          <span *ngFor="let labelClass of labelsClasses" class="w-6 h-6 rounded-full flex items-center justify-center cursor-pointer" [ngStyle]="{'backgroundColor': labelClass}" (click)="label = labelClass">
+            <span *ngIf="label === labelClass" class="material-icons-outlined text-white text-sm">check</span>
           </span>
         </div>
       </div>
     </div>
     <footer class="flex justify-end w-100 border-t p-3 mt-5">
-       <button type="submit" class="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded text-white">
-        Save
-       </button>
+       <button type="submit" class="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded text-white">Save</button>
     </footer>
   </form>
 </div>

@@ -4,6 +4,8 @@
     <p class="text-sm p-1 my-1 text-center" [ngClass]="{ 'bg-blue-600 text-white rounded-full w-7': isCurrnetDay }">{{day?.format('DD')}}</p>
   </header>
   <div class="flex-1 cursor-pointer" (click)="handleAddEvent(day!)">
-
+    <div *ngFor="let event of dayEvents$ | async" class="p-1 mr-3 mb-1 text-gray-600 rounded text-sm truncate" [ngStyle]="{'backgroundColor': event.label}" (click)="handleSetSelectedEvent(event)">
+      {{event.title}}
+    </div>
   </div>
 </div>
