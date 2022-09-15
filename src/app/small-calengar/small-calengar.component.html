@@ -8,10 +8,10 @@
   </header>
   <div class="grid grid-cols-7 grid-rows-6">
     <ng-container *ngIf="currentMonth$ | async as currentMonth">
-      <span class="text-sm py-1 text-center text-gray-500" *ngFor="let day of currentMonth[0]">{{day.format('dd').charAt(0)}}</span>
+      <span class="text-xs py-1 text-center text-gray-500" *ngFor="let day of currentMonth[0]">{{day.format('dd').charAt(0)}}</span>
       <ng-container *ngFor="let week of currentMonth" class="py-1 w-full">
         <button *ngFor="let day of week" class="py-1 w-full" [ngClass]="getDayClass(day)" (click)="handleDayClick(day)">
-          <span class="text-sm">{{day.format('D')}}</span>
+          <span class="text-xs">{{day.format('D')}}</span>
         </button>
       </ng-container>
     </ng-container>
